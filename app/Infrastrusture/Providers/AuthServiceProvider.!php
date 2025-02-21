@@ -1,0 +1,56 @@
+<?php
+
+namespace App\Infrastrusture\Providers;
+
+
+use App\Domain\Models\User;
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Route;
+
+class AuthServiceProvider extends ServiceProvider
+{
+    /**
+     * The policy mappings for the application.
+     *
+     * @var array<class-string, class-string>
+     */
+    protected $policies = [
+        // 'App\Models\Model' => 'App\Policies\ModelPolicy',
+    ];
+
+    /**
+     * Register any authentication / authorization services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        $this->registerPolicies();
+
+//        Gate::define('debug-functions', function (?User $user) {
+//            return config('app.debug_functions');
+//        });
+//
+        Gate::define('access', function (?User $user, string ...$permissions) {
+//            if (is_string($permissions)) {
+//                $a = 1;
+//            }
+//
+//            if ($user->isAdmin()) {
+                return true;
+//            }
+//
+//            foreach ($permissions as $permission) {
+//                if ($user->hasPermission($permission)) {
+//                    return true;
+//                }
+//            }
+//            return false;
+        });
+
+        Route::macro('assets', function (string $permissions) {
+            return $this->middleware('access:' . $permissions);
+        });
+    }
+}
