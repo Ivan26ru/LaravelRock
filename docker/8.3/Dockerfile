@@ -68,4 +68,6 @@ RUN chmod +x /usr/local/bin/start-container
 
 EXPOSE 80/tcp
 
+RUN echo "dockerfile composer install"
+
 ENTRYPOINT ["start-container"]
