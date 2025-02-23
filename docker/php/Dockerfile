@@ -64,14 +64,12 @@ RUN usermod -a -G www-data ${UNAME}
 
 COPY --from=composer:2.7.2 /usr/bin/composer /usr/bin/composer
 
-COPY ./backend/composer.json .
-#COPY ../../../backend/composer.lock .
+COPY ./backend/ .
 
 RUN composer install
 
 RUN pwd && ls -la
 
-#COPY ./backend/ .
 COPY ./docker/php/entrypoint.sh /entrypoint.sh
 
 USER ${UNAME}
