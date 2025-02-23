@@ -1,4 +1,4 @@
-FROM php:8.3-fpm
+FROM php:8.4-fpm
 
 #RUN mkdir -p /var/www/backend
 
@@ -9,6 +9,7 @@ ARG GID
 ARG UNAME
 
 RUN apt-get update
+
 RUN apt-get install --no-install-recommends -y nano libxml2-dev sudo nodejs npm
 
 # php
@@ -60,7 +61,7 @@ RUN groupadd --gid ${GID} ${UNAME} \
     --gid ${GID} --shell /bin/bash --skel /dev/null ${UNAME}
 
 RUN echo "${UNAME} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-RUN usermod -a -G www-data ${UNAME}
+RUN usermod -a -G wwwdata ${UNAME}
 
 COPY --from=composer:2.7.2 /usr/bin/composer /usr/bin/composer
 
