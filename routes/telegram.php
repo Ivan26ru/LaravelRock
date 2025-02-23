@@ -1,6 +1,7 @@
 <?php
 /** @var SergiX44\Nutgram\Nutgram $bot */
 
+use App\Presentation\Controllers\Telegramm\TelegramController;
 use SergiX44\Nutgram\Nutgram;
 
 /*
@@ -14,6 +15,11 @@ use SergiX44\Nutgram\Nutgram;
 */
 
 $bot->onCommand('start', function (Nutgram $bot) {
-
     $bot->sendMessage('Hello, world! Response for /start');
 })->description('The start command!');
+
+
+$bot->onCommand('test', TelegramController::class)
+    ->description(
+    'The start command!'
+);

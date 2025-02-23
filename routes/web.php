@@ -16,7 +16,7 @@ Route::get('/force_login/{user}', function (User $user) {
     print_r($user->toArray());
 })->where('user', '[0-9]+');
 
-Route::get('telegram', [TelegramController::class, 'handle'])->name('telegram');
+//Route::get('telegram', [TelegramController::class, 'handle'])->name('telegram');
 
 // user, postID
 Route::get('p/{postId}/edit', function (int $post) {
