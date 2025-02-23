@@ -2,16 +2,12 @@
 
 ## Развертывание
 
-```bash
-sail up -d
-```
-
 Запуск миграций
 ```bash
-sail artisan migrate
+php artisan migrate
 ```
 
 Наполнение фейковых данных
 ```bash
-sail artisan db:seed
+php artisan db:seed
 ```
