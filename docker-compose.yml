@@ -3,7 +3,7 @@ version: '3.9'
 services:
   nginx:
     image: nginx:1.26
-    platform: linux/x86_64
+#    platform: linux/x86_64
     volumes:
       - ./backend/:/var/www/backend
       - ./docker/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
@@ -36,7 +36,7 @@ services:
 
   db:
     image: mariadb:10.11
-    platform: linux/x86_64
+#    platform: linux/x86_64
     environment:
       MYSQL_DATABASE: ${DB_DATABASE}
       MYSQL_USER: ${DB_USERNAME}
