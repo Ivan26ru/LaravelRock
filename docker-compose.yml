@@ -17,6 +17,7 @@ services:
     php-fpm:
         build:
             context: .
+            network: host
             dockerfile: docker/php/Dockerfile
             args:
                 UID: ${UID}
