@@ -11,7 +11,7 @@ return new class extends Migration {
             $table->id();
             $table->string('message');
             $table->foreignId('post_id')->constrained("posts")->cascadeOnDelete();
-            $table->foreignId('user_id')->constrained("users")->nullOnDelete();
+            $table->foreignId('user_id')->constrained("users")->cascadeOnDelete();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -19,6 +19,10 @@ return new class extends Migration {
 
     public function down(): void
     {
+        Schema::table('comments', function (Blueprint $table) {
+            $table->dropForeign('comments_user_id_foreign');
+            $table->dropForeign('comments_post_id_foreign');
+        });
         Schema::dropIfExists('comments');
     }
 };
