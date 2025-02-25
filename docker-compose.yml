@@ -58,3 +58,5 @@ networks:
   myProject:
       driver: bridge
       name: "${COMPOSE_PROJECT_NAME}-network"
+      driver_opts:
+          com.docker.network.driver.mtu: 1450
