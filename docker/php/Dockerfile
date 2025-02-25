@@ -8,9 +8,7 @@ ARG UID
 ARG GID
 ARG UNAME
 
-RUN apt update
-
-RUN apt install -y nano libxml2-dev sudo nodejs npm
+RUN apt-get update && apt-get install --no-install-recommends -y nano libxml2-dev sudo nodejs npm
 
 # php
 RUN apt install -y libicu-dev
