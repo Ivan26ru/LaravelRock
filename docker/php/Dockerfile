@@ -64,6 +64,7 @@ RUN echo "${UNAME} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 RUN usermod -a -G wwwdata ${UNAME}
 
 COPY --from=composer:2.7.2 /usr/bin/composer /usr/bin/composer
+RUN composer config --global repo.packagist composer https://packagist.org
 
 COPY ./backend/ .
 
