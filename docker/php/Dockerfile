@@ -1,4 +1,4 @@
-FROM php:8.3-fpm
+FROM php:8.3-fpm AS base
 
 #RUN mkdir -p /var/www/backend
 
@@ -8,27 +8,27 @@ ARG UID
 ARG GID
 ARG UNAME
 
-RUN apt-get update
+RUN apt update
 
-RUN apt-get install --no-install-recommends -y nano libxml2-dev sudo nodejs npm
+RUN apt install --no-install-recommends -y nano libxml2-dev sudo nodejs npm
 
 # php
-RUN apt-get install -y libicu-dev
-RUN apt-get install -y libonig-dev
-RUN apt-get install -y libzip-dev
-RUN apt-get install -y libpng-dev
-RUN apt-get install -y libpq-dev
-RUN apt-get install -y libjpeg-dev
-RUN apt-get install -y zlib1g-dev
-RUN apt-get install -y libfreetype6-dev
-RUN apt-get install -y libjpeg62-turbo-dev
-RUN apt-get install -y libwebp-dev
-RUN apt-get install -y zip
-RUN apt-get install -y unzip
-RUN apt-get install -y git
-RUN apt-get install -y mariadb-client
-RUN apt-get install -y libmagickwand-dev
-RUN apt-get install -y libmagickcore-dev
+RUN apt install -y libicu-dev
+RUN apt install -y libonig-dev
+RUN apt install -y libzip-dev
+RUN apt install -y libpng-dev
+RUN apt install -y libpq-dev
+RUN apt install -y libjpeg-dev
+RUN apt install -y zlib1g-dev
+RUN apt install -y libfreetype6-dev
+RUN apt install -y libjpeg62-turbo-dev
+RUN apt install -y libwebp-dev
+RUN apt install -y zip
+RUN apt install -y unzip
+RUN apt install -y git
+RUN apt install -y mariadb-client
+RUN apt install -y libmagickwand-dev
+RUN apt install -y libmagickcore-dev
 
 RUN docker-php-ext-configure intl
 RUN docker-php-ext-install intl
