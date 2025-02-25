@@ -57,3 +57,4 @@ services:
 networks:
   myProject:
       driver: bridge
+      name: "${COMPOSE_PROJECT_NAME}-network"
